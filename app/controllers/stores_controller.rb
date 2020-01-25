@@ -10,11 +10,16 @@ class StoresController < ApplicationController
     end
     
     def new
-
+        @store = Store.new
     end
 
     def create
-
+        @store = Store.create(store_params)
+        if @store.persisted?
+            redirect_to stores_path(@store)
+        else
+            render :new
+        end
     end
 
     def edit
