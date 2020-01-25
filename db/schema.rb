@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_232717) do
+ActiveRecord::Schema.define(version: 2020_01_25_172947) do
+
+  create_table "item_sections", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "section_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_sections_on_item_id"
+    t.index ["section_id"], name: "index_item_sections_on_section_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "name"
+    t.integer "store_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_sections_on_store_id"
+    t.index ["user_id"], name: "index_sections_on_user_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_stores_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -26,4 +60,9 @@ ActiveRecord::Schema.define(version: 2020_01_24_232717) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "item_sections", "items"
+  add_foreign_key "item_sections", "sections"
+  add_foreign_key "sections", "stores"
+  add_foreign_key "sections", "users"
+  add_foreign_key "stores", "users"
 end

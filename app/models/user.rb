@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
     validates :username, presence: true, uniqueness: true, length: {minimum: 5}
     validates :name, presence: true, uniqueness: true
+    has_many :stores
+    has_many :sections, through: :stores
 end
