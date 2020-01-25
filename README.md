@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Work in Progress. 
 
-Things you may want to cover:
+    This site will allow users to create thier own customizable shopping lists for individual stores by user-created store sections. 
 
-* Ruby version
+# Usage
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
